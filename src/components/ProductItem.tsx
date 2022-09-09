@@ -1,11 +1,13 @@
 import styled from 'styled-components'
-import React from 'react'
-import { FavoriteBorder, SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons';
+import React,{useState} from 'react'
+import { FavoriteBorder, SearchOutlined, ShoppingCartOutlined, DeleteForeverOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { ProductType } from '../models';
 import {useDispatch} from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { addToFavorites } from '../redux/slices/favoritesSlice';
+import { deleteProduct } from '../redux/slices/productsSlice';
+import Announcements from './Announcements';
 
 const Info = styled.div`
 opacity: 0;
@@ -72,21 +74,29 @@ interface Props extends React.HTMLProps<HTMLDivElement>{
 };
 
 const ProductItem: React.FC<Props>  = (props: Props) => {
+  const [announcement,setAnnouncement] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const favoritesHandler = () => {
-    dispatch(addToFavorites(props.pr))
+    setTimeout(()=>{
+      setAnnouncement(false);
+    },1000)
+    setAnnouncement(true);
+    dispatch(addToFavorites(props.pr));
   }
 
   const deleteHandler = () => {
-    
+    dispatch(deleteProduct(props.pr))
   }
   return (
     <Container>
       <Circle />
       <Image src={props.pr.avatar} alt="IMAGE" />
+      {announcement ? <Info> 
+        <Announcements message="Product added to Favorites" /> 
+        </Info> :
       <Info>
         <Icon onClick={deleteHandler}>
-          <ShoppingCartOutlined />
+          <DeleteForeverOutlined />
         </Icon>
         <Link to={`/product/${props.pr._id}`}>
           <Icon>
@@ -96,7 +106,7 @@ const ProductItem: React.FC<Props>  = (props: Props) => {
         <Icon onClick={favoritesHandler}>
           <FavoriteBorder />
         </Icon>
-      </Info>
+      </Info>}
     </Container>
   )
 }

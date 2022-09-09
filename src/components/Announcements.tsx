@@ -9,11 +9,14 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `
+interface Props {
+  message: string
+}
 
-const Announcements = () => {
+const Announcements = (props:Props) => {
   return (
     <Container>
-      Product Added
+      {props.message}
     </Container>
   )
 }

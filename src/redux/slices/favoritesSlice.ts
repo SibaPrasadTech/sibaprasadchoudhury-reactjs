@@ -19,7 +19,7 @@ const favoritesSlice = createSlice({
       }
       else{
         state.favorites.push(action.payload);
-        state.total = state.total + 1;
+        state.total = state.total - 1;
       }
     } 
   }

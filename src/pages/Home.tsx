@@ -11,6 +11,7 @@ const Home:React.FC = () => {
   const [error,setError] = useState<ErrorResponse>({message: "",stack: ""});
   return (
     <div>
+      
       <Navbar/>
       {/* <Slider/> */}
       <Categories/>

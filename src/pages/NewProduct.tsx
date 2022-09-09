@@ -72,7 +72,7 @@ export default function NewProduct() {
 
   return (
     <div className="container">
-    {announcement ? <Announcements/> : null}
+    {announcement ? <Announcements message="Added New Product"/> : null}
     <Navbar/>
     <div className="newProduct">
       <h1 className="addProductTitle">Add Product</h1>

@@ -25,6 +25,11 @@ const productsSlice = createSlice({
   reducers: {
     getAllProducts: (state,action) => {
       console.log(state);
+    },
+    deleteProduct: (state,action) => {
+      const index = state.products.findIndex((product) => product._id === action.payload._id);
+      console.log(index);
+      state.products.splice(index, 1);
     }
   },
   extraReducers(builder) {
@@ -41,5 +46,5 @@ const productsSlice = createSlice({
     })
   }
 })
-
+export const {deleteProduct} = productsSlice.actions;
 export default productsSlice.reducer;
