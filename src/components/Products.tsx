@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { axiosGetAllProducts } from "../api";
 import { ProductType } from "../models";
+import { fetchProducts } from "../redux/slices/productsSlice";
 import ProductItem from "./ProductItem";
+import {useDispatch,useSelector} from 'react-redux'
+import { RootState,AppDispatch } from "../redux/store";
 
 const Container = styled.div`
   padding: 20px;
@@ -12,21 +15,14 @@ const Container = styled.div`
 `;
 
 const Products:React.FC = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
-
+  // const [products, setProducts] = useState<ProductType[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const products = useSelector((state:RootState) => state.productsReducer.products);
+  //fetchProducts
   useEffect(() => {
-    const getProducts = async () => {
-      if (products.length > 0){return}
-      try {
-        const res = await axiosGetAllProducts();
-        console.log(res);
-        setProducts(res.data.products);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getProducts();
-  }, []);
+
+    dispatch(fetchProducts());
+  }, [products]);
 
   return (
     <Container>

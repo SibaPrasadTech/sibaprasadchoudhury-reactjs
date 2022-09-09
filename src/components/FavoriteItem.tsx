@@ -2,10 +2,7 @@ import styled from 'styled-components'
 import React from 'react'
 import { FavoriteBorder, SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { ProductType } from '../models';
-import {useDispatch} from 'react-redux';
-import { AppDispatch } from '../redux/store';
-import { addToFavorites } from '../redux/slices/favoritesSlice';
+import { FavoritesType, ProductType } from '../models';
 
 const Info = styled.div`
 opacity: 0;
@@ -71,11 +68,7 @@ interface Props extends React.HTMLProps<HTMLDivElement>{
   pr: ProductType
 };
 
-const ProductItem: React.FC<Props>  = (props: Props) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const favoritesHandler = () => {
-    dispatch(addToFavorites(props.pr))
-  }
+const FavoriteItem: React.FC<Props>  = (props: Props) => {
   return (
     <Container>
       <Circle />
@@ -89,7 +82,7 @@ const ProductItem: React.FC<Props>  = (props: Props) => {
             <SearchOutlined />
           </Icon>
         </Link>
-        <Icon onClick={favoritesHandler}>
+        <Icon>
           <FavoriteBorder />
         </Icon>
       </Info>
@@ -97,4 +90,4 @@ const ProductItem: React.FC<Props>  = (props: Props) => {
   )
 }
 
-export default ProductItem;
+export default FavoriteItem;
