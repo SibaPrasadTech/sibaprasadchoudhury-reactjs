@@ -7,6 +7,7 @@ import Products from '../components/Products';
 import Categories from '../components/Categories';
 
 const Home:React.FC = () => {
+  
   const [error,setError] = useState<ErrorResponse>({message: "",stack: ""});
   return (
     <div>

@@ -59,7 +59,7 @@ const ProductDetails:React.FC= () => {
       } catch { }
     };
     getProduct();
-  }, [id]);
+  }, []);
 
   return (
     <Container>

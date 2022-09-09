@@ -13,6 +13,13 @@ const Container = styled.div`
 
 const Categories:React.FC = () => {
   const [categories,setCategories] = useState<Category[]>([]);
+  const allCategory: Category = {
+     _id : "0",
+  name: "All",
+  updatedAt: "",
+  createdAt: "",
+  _v: 1
+  }
   useEffect(()=>{
     let getCategories = async () => {
       if(categories.length > 0) return 
@@ -25,6 +32,7 @@ const Categories:React.FC = () => {
 
   return (
     <Container>
+      <CategoryItem key={allCategory._id} cat={allCategory} />
       {categories?.map((category:Category) => {
         return <CategoryItem key={category._id} cat={category} />
       })}

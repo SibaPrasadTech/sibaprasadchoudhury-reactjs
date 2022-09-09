@@ -45,7 +45,7 @@ const CategoryItem:React.FC<Props> = (props:Props) => {
   //console.log(props.cat);
   return (
     <Container>
-      <Link to={`/products/${props.cat.name}`}>
+      <Link to={`/?category=${props.cat.name}`}>
       <Image src={props.name} alt={props.name}/>
       <Info>
         {/* <Title>{props.cat.name}</Title> */}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 // import {Search, ShoppingCartOutlined } from "@material-ui/icons";
-import { FavoriteBorder } from '@material-ui/icons';
+import { Favorite} from '@material-ui/icons';
 import { Badge } from '@material-ui/core';
 import {mobile} from "../responsive";
 // import { useSelector } from 'react-redux';
@@ -56,9 +56,12 @@ const Right = styled.div`
   ${mobile({justifyContent: "center"})}
 `
 const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
   margin-left: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${mobile({fontSize: "12px", marginLeft: "10px"})}
 `
 function Navbar() {
@@ -69,12 +72,20 @@ function Navbar() {
           <Language>EN</Language>
         </Left>
         <Center>
+          <Link to="/">
           <Logo>UPAYMENTS.</Logo>
+          </Link>
         </Center>
         <Right>
           <MenuItem>
+          <Link to="/new-product">
+              Add Product
+          </Link>
+          </MenuItem>
+          <MenuItem>
+          <div>Favorites</div>
           <Link to="/favorites">
-              <FavoriteBorder/>
+              <Favorite/>
           </Link>
           </MenuItem>
         </Right>

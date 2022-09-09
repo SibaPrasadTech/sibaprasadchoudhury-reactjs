@@ -17,6 +17,7 @@ const Favorites: React.FC = () => {
   // const dispatch = useDispatch<AppDispatch>();
   return (
     <Container>
+        {favorites.length === 0 ? <div>Add your favorites products to see them here!!!</div> : null}
         {favorites.map( (prod:ProductType)=>{
           return <FavoriteItem key={prod._id} pr={prod}></FavoriteItem>
         })}
