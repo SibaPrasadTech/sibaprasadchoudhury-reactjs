@@ -11,6 +11,15 @@ export interface ProductType{
   price: number
 }
 
+export interface AddProductType{
+  name: string,
+  avatar: string,
+  category: string,
+  developerEmail:string,
+  description: string,
+  price: number
+}
+
 export interface Category{
   _id : string,
   name: string,

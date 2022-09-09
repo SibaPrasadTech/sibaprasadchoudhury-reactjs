@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { axiosGetAllProducts } from "../api";
+// import { axiosGetAllProducts } from "../api";
 import { ProductType } from "../models";
 import { fetchProducts } from "../redux/slices/productsSlice";
 import ProductItem from "./ProductItem";
@@ -23,7 +23,7 @@ const Products:React.FC = () => {
 
   useEffect(()=>{
     console.log("Category : ",cat);
-    typeof cat == "undefined" || cat == "All"  ? setFilteredProducts(products) :
+    typeof cat === "undefined" || cat === "All"  ? setFilteredProducts(products) :
     setFilteredProducts(products.filter((product:ProductType)=>{return product.category === cat}));
   },[cat,products]);
 

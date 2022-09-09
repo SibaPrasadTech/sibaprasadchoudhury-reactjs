@@ -76,14 +76,18 @@ const ProductItem: React.FC<Props>  = (props: Props) => {
   const favoritesHandler = () => {
     dispatch(addToFavorites(props.pr))
   }
+
+  const deleteHandler = () => {
+    
+  }
   return (
     <Container>
       <Circle />
       <Image src={props.pr.avatar} alt="IMAGE" />
       <Info>
-        {/* <Icon>
+        <Icon onClick={deleteHandler}>
           <ShoppingCartOutlined />
-        </Icon> */}
+        </Icon>
         <Link to={`/product/${props.pr._id}`}>
           <Icon>
             <SearchOutlined />

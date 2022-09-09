@@ -83,9 +83,11 @@ function Navbar() {
           </Link>
           </MenuItem>
           <MenuItem>
-          <div>Favorites</div>
           <Link to="/favorites">
-              <Favorite/>
+          <div>Favorites</div>
+          </Link>
+          <Link to="/favorites">
+            <Favorite/>
           </Link>
           </MenuItem>
         </Right>
